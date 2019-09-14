@@ -50,6 +50,19 @@ public class MainServlet extends HttpServlet {
 
             switch (command) {
 
+                case 4:
+                    //команда для создания новой платежки
+                    //переход в новое окно - там создание платежки и ее добавление в бд
+                    break;
+
+                case 5:
+                    //команда для получения списка действующих заказов
+                    break;
+
+                case 6:
+                    //команда для уведомление о выполнении заказа
+                    break;
+
                 case 0: //show all names
 
                     /*ArrayList<String> names = SQLiteClass.getAllNames();

@@ -57,6 +57,15 @@ public class SQLiteClass {
         return names;
     }*/
 
+
+    //функция: добавить заказ
+
+    //функция: выдать список заказов
+
+    //функция: изменить статус заказа
+
+    //функция: архивировать заказ
+
     public static void CloseDB() throws ClassNotFoundException, SQLException {
         conn.close();
     }
