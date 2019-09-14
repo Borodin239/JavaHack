@@ -11,7 +11,7 @@ if (portName.length == 0) {
 
 if (serverHostName === "localhost")
 {
-    serverPath = serverProtocolName + "//" + serverHostName + ":" + portName;
+    serverPath = serverProtocolName + "//" + serverHostName + ":" + portName;// + "/java_habrahabr_war_exploded";
 }
 else
 {
@@ -46,7 +46,7 @@ function serverConnectFunc(serverUrl, jsonData) {
             }
         },
         error: function (xhr, status, error) {
-            alert(error);
+            alert(xhr + "\n" + status + "\n" + error);
         }
     });
 }
