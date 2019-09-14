@@ -4,10 +4,18 @@ import javax.servlet.http.*;
 import javax.servlet.http.HttpServlet;
 import java.util.ArrayList;
 
+import Data.UserData;
 import Databases.SQLiteClass;
 import org.json.JSONObject;
 
 public class MainServlet extends HttpServlet {
+
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+
+        super.service(req, resp);
+    }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -44,12 +52,12 @@ public class MainServlet extends HttpServlet {
 
                 case 0: //show all names
 
-                    ArrayList<String> names = SQLiteClass.getAllNames();
+                    /*ArrayList<String> names = SQLiteClass.getAllNames();
                     
                     JSONObject jsonToReturn0 = new JSONObject();
                     jsonToReturn0.put("answer", "names");
                     jsonToReturn0.put("list", names.toString());
-                    out.println(jsonToReturn0.toString());
+                    out.println(jsonToReturn0.toString());*/
 
                     break;
 
@@ -67,7 +75,19 @@ public class MainServlet extends HttpServlet {
 
                 case 3: //authorization
                     //поиск в базе данных пользователя с данным телефоном
+                    String telephoneString = jsonObject.getString("telephone");
+                    UserData user;
+                    try {
+                        long telephone = Long.parseLong(telephoneString);
+                        user = SQLiteClass.getUserData(telephone);
+                    } catch (Exception e){
+                        System.out.println(e.toString());
+                        break;
+                    }
+
                     //высылка ему пароля на телефон
+                    final int sendedPassword = user.sentPassword();
+
                     //окно для ввода
                     //проверка соответствия введенному паролю
                     //вход
