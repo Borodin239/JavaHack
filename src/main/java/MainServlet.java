@@ -64,7 +64,15 @@ public class MainServlet extends HttpServlet {
                     out.println(jsonToReturn1.toString());
 
                     break;
-                
+
+                case 3: //authorization
+                    //поиск в базе данных пользователя с данным телефоном
+                    //высылка ему пароля на телефон
+                    //окно для ввода
+                    //проверка соответствия введенному паролю
+                    //вход
+                    break;
+
                 default:
                     System.out.println("default switch");
                     break;
