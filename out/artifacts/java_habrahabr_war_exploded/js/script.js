@@ -32,6 +32,7 @@ function serverConnectFunc(serverUrl, jsonData) {
             {
                 case "goOrder":
                     document.location.href = serverUrl + "/paycheck.html";
+                    alert("switch");
                     break;
 
                 case "ok":

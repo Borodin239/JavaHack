@@ -61,8 +61,30 @@ public class SQLiteClass {
 
 
     //функция: добавить заказ
-    public static boolean addOrder(OrderData orderData){
-        return false;
+    public static boolean addOrder(OrderData orderData) throws SQLException, NamingException, ClassNotFoundException {
+        boolean result = false;
+        try {
+            Conn();
+            stat = conn.createStatement();
+
+            PreparedStatement statement = conn.prepareStatement
+                    ("INSERT INTO orders (id, deadline, price, link) VALUES (?, ?, ?, ?)");
+            statement.setString(1, Integer.toString(orderData.getId()));
+            statement.setString(2, orderData.getDeadline().toString());
+            statement.setString(3, Integer.toString(orderData.getPrice()));
+            statement.setString(4, orderData.getLink());
+            statement.execute();
+            statement.close();
+            result = true;
+        } catch (Exception e) {
+            System.out.println(e);
+            result = false;
+        }
+        finally {
+            stat.close();
+            CloseDB();
+        }
+        return result;
     }
 
     //функция: выдать список заказов
