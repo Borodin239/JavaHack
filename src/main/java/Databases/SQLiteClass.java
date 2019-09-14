@@ -1,5 +1,7 @@
 package Databases;
 
+import Data.OrderData;
+import Data.StatusEnum;
 import Data.UserData;
 
 import javax.naming.NamingException;
@@ -56,6 +58,32 @@ public class SQLiteClass {
 
         return names;
     }*/
+
+
+    //функция: добавить заказ
+    public static boolean addOrder(OrderData orderData){
+        return false;
+    }
+
+    //функция: выдать список заказов
+    public static ArrayList<OrderData> orderList(){
+        return null;
+    }
+
+    //функция: узнать статус заказа
+    public static StatusEnum checkOrderStatus(int orderId){
+        return null;
+    }
+
+    //функция: изменить статус заказа
+    public static boolean setOrderStatus(int orderId, StatusEnum status){
+        return false;
+    }
+
+    //функция: архивировать заказ
+    public static boolean archiveOrder(int orderId){
+        return false;
+    }
 
     public static void CloseDB() throws ClassNotFoundException, SQLException {
         conn.close();

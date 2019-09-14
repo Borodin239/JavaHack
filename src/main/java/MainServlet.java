@@ -50,6 +50,23 @@ public class MainServlet extends HttpServlet {
 
             switch (command) {
 
+                case 4:
+                    //команда для создания новой платежки
+                    //переход в новое окно - там создание платежки и ее добавление в бд
+                    JSONObject jsonToReturn4 = new JSONObject();
+                    jsonToReturn4.put("answer", "goOrder");
+                    out.println(jsonToReturn4.toString());
+
+                    break;
+
+                case 5:
+                    //команда для получения списка действующих заказов
+                    break;
+
+                case 6:
+                    //команда для уведомление о выполнении заказа
+                    break;
+
                 case 0: //show all names
 
                     /*ArrayList<String> names = SQLiteClass.getAllNames();

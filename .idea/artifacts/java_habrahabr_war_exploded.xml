@@ -9,9 +9,11 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.json:json:20141113" />
           <element id="library" level="project" name="Maven: org.xerial:sqlite-jdbc:3.8.11.2" />
+          <element id="library" level="project" name="Maven: javaee:javaee-api:11" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="java_habrahabr/web/Web" />
+      <element id="javaee-facet-resources" facet="java_habrahabr/web/Web2" />
     </root>
   </artifact>
 </component>

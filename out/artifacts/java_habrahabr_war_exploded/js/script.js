@@ -11,7 +11,7 @@ if (portName.length == 0) {
 
 if (serverHostName === "localhost")
 {
-    serverPath = serverProtocolName + "//" + serverHostName + ":" + portName;// + "/java_habrahabr_war_exploded";
+    serverPath = serverProtocolName + "//" + serverHostName + ":" + portName;
 }
 else
 {
@@ -30,6 +30,10 @@ function serverConnectFunc(serverUrl, jsonData) {
         success: function (event) {
             switch (event["answer"])
             {
+                case "goOrder":
+                    document.location.href = serverUrl + "/paycheck.html";
+                    break;
+
                 case "ok":
                     alert("success");
                     break;
@@ -46,7 +50,7 @@ function serverConnectFunc(serverUrl, jsonData) {
             }
         },
         error: function (xhr, status, error) {
-            alert(xhr + "\n" + status + "\n" + error);
+            alert(error);
         }
     });
 }
@@ -64,6 +68,13 @@ function addName()
     var jsonData = new Object();
     jsonData.command = "1";
     jsonData.name = $('#NewNameInput').val();
+
+    serverConnectFunc(serverPath, JSON.stringify(jsonData));
+}
+
+function addOrder() {
+    var jsonData = new Object();
+    jsonData.command = "4";
 
     serverConnectFunc(serverPath, JSON.stringify(jsonData));
 }
