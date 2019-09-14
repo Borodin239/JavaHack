@@ -32,6 +32,7 @@ function serverConnectFunc(serverUrl, jsonData) {
             {
                 case "goOrder":
                     document.location.href = serverUrl + "/paycheck.html";
+                    alert("switch");
                     break;
 
                 case "ok":
@@ -53,14 +54,6 @@ function serverConnectFunc(serverUrl, jsonData) {
             alert(error);
         }
     });
-}
-
-function showAllNames()
-{
-    var jsonData = new Object();
-    jsonData.command = "0";
-
-    serverConnectFunc(serverPath, JSON.stringify(jsonData));
 }
 
 function addName()

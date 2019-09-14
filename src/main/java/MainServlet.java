@@ -76,6 +76,10 @@ public class MainServlet extends HttpServlet {
                     jsonToReturn0.put("list", names.toString());
                     out.println(jsonToReturn0.toString());*/
 
+                    JSONObject jsonToReturn0 = new JSONObject();
+                    jsonToReturn0.put("answer", "go");
+                    out.println(jsonToReturn0.toString());
+
                     break;
 
                 case 1: //add new name

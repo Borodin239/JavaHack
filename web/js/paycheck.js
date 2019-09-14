@@ -56,26 +56,13 @@ function serverConnectFunc(serverUrl, jsonData) {
     });
 }
 
-function showAllNames()
-{
-    var jsonData = new Object();
-    jsonData.command = "0";
-
-    serverConnectFunc(serverPath, JSON.stringify(jsonData));
-}
-
-function addName()
-{
-    var jsonData = new Object();
-    jsonData.command = "1";
-    jsonData.name = $('#NewNameInput').val();
-
-    serverConnectFunc(serverPath, JSON.stringify(jsonData));
-}
-
 function addOrder() {
     var jsonData = new Object();
-    jsonData.command = "4";
+    jsonData.command = "41";
+    jsonData.link = "sad";
+    jsonData.deadline = "12";
+    jsonData.price = $('#PriceInput').val();
+
 
     serverConnectFunc(serverPath, JSON.stringify(jsonData));
 }
