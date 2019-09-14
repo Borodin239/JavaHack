@@ -1,5 +1,5 @@
 /* Loading fonts */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap');
 
 html {
   font-family: 'Open Sans', sans-serif;
@@ -17,27 +17,9 @@ body {
   /* Apllying styles */
 }
 
-
-/* Menu styles */
-#menu {
-  width: 7%;
-  background-color: #343F4B;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.menu {
-  padding: 20px;
-}
-
-.mainWindow {
-  width: 63%;
-}
-
-.additionalWindow {
-  width: 30%;
-  background-color: #343F4B;
-  border-radius: 70px 0px 0px 70px;
+h1 {
+  margin: 0px;
+  color: #343F4B;
+  font-size: 28px;
+  font-weight: 700;
 }
