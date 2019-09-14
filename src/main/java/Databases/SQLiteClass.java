@@ -1,5 +1,7 @@
 package Databases;
 
+import Data.UserData;
+
 import javax.naming.NamingException;
 import java.sql.*;
 import java.util.ArrayList;
@@ -31,7 +33,12 @@ public class SQLiteClass {
         }
     }
 
-    public static ArrayList<String> getAllNames() throws ClassNotFoundException, SQLException, NamingException
+    public static UserData getUserData(long telephone){
+        //Получение данных пользователя
+        return new UserData((long) 11, "sda");
+    }
+
+    /*public static ArrayList<String> getAllNames() throws ClassNotFoundException, SQLException, NamingException
     {
         ArrayList<String> names = new ArrayList<String>();
 
@@ -48,7 +55,7 @@ public class SQLiteClass {
         CloseDB();
 
         return names;
-    }
+    }*/
 
     public static void CloseDB() throws ClassNotFoundException, SQLException {
         conn.close();
