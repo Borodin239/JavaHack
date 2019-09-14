@@ -53,6 +53,10 @@ public class MainServlet extends HttpServlet {
                 case 4:
                     //команда для создания новой платежки
                     //переход в новое окно - там создание платежки и ее добавление в бд
+                    JSONObject jsonToReturn4 = new JSONObject();
+                    jsonToReturn4.put("answer", "goOrder");
+                    out.println(jsonToReturn4.toString());
+
                     break;
 
                 case 5:
