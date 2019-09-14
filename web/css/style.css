@@ -1,0 +1,43 @@
+/* Loading fonts */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  margin: 0px; /* Removing default margin */
+
+  /* Flex settings */
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: stretch;
+
+  /* Apllying styles */
+}
+
+
+/* Menu styles */
+#menu {
+  width: 7%;
+  background-color: #343F4B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.menu {
+  padding: 20px;
+}
+
+.mainWindow {
+  width: 63%;
+}
+
+.additionalWindow {
+  width: 30%;
+  background-color: #343F4B;
+  border-radius: 70px 0px 0px 70px;
+}
