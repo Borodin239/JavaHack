@@ -4,6 +4,7 @@ import javax.servlet.http.*;
 import javax.servlet.http.HttpServlet;
 import java.util.ArrayList;
 
+import Data.OrderData;
 import Data.UserData;
 import Databases.SQLiteClass;
 import org.json.JSONObject;
@@ -51,7 +52,7 @@ public class MainServlet extends HttpServlet {
             switch (command) {
 
                 case 4:
-                    //команда для создания новой платежки
+                    //команда для создания новой платежки - переход в новое окно
                     //переход в новое окно - там создание платежки и ее добавление в бд
                     JSONObject jsonToReturn4 = new JSONObject();
                     jsonToReturn4.put("answer", "goOrder");
@@ -59,8 +60,20 @@ public class MainServlet extends HttpServlet {
 
                     break;
 
+                case 41:
+                    //команда для создание новой платежки - из нового окна сохранение в базу данных
+                    //взять дату, цену и ссылку из окошка - создать новую строку в БД
+                    //вернуться в главное окно
+
+                    String name = jsonObject.getString("name");
+                    Integer price = jsonObject.getInt("price");
+                    String link = jsonObject.getString("link");
+
+                    break;
+
                 case 5:
                     //команда для получения списка действующих заказов
+                    ArrayList<OrderData> orderList = SQLiteClass.orderList();
                     break;
 
                 case 6:
