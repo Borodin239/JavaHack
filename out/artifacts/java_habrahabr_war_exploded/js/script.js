@@ -56,14 +56,6 @@ function serverConnectFunc(serverUrl, jsonData) {
     });
 }
 
-function showAllNames()
-{
-    var jsonData = new Object();
-    jsonData.command = "0";
-
-    serverConnectFunc(serverPath, JSON.stringify(jsonData));
-}
-
 function addName()
 {
     var jsonData = new Object();

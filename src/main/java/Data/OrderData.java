@@ -4,16 +4,16 @@ import java.util.Date;
 import java.util.Random;
 
 public class OrderData {
-    private Date deadline = new Date();
     private int id = new Random().nextInt();
     private int price;
+    private String deadline;
     private String link;
 
     public int getId() {
         return id;
     }
 
-    public Date getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
@@ -23,5 +23,11 @@ public class OrderData {
 
     public String getLink() {
         return link;
+    }
+
+    public OrderData(int price, String  deadline, String link){
+        this.price = price;
+        this.deadline = deadline;
+        this.link = link;
     }
 }

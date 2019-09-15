@@ -4,6 +4,7 @@ import javax.servlet.http.*;
 import javax.servlet.http.HttpServlet;
 import java.util.ArrayList;
 
+import Data.OrderData;
 import Data.UserData;
 import Databases.SQLiteClass;
 import org.json.JSONObject;
@@ -59,8 +60,24 @@ public class MainServlet extends HttpServlet {
 
                     break;
 
+                case 41:
+                    /*String link = jsonObject.getString("link");
+                    String deadline = jsonObject.getString("deadline");
+                    int price = Integer.getInteger(jsonObject.getString("price"));
+                    OrderData newOrder = new OrderData(price, deadline, link);*/
+                    JSONObject jsonToReturn41 = new JSONObject();
+                    //if (SQLiteClass.addOrder(newOrder)) {
+                        jsonToReturn41.put("answer", "goOrderFinal");
+                    //}else {
+                      //  jsonToReturn41.put("answer", "goOrderFinal");
+                    //}
+                    out.println(jsonToReturn41.toString());
+                    break;
+
+
                 case 5:
                     //команда для получения списка действующих заказов
+
                     break;
 
                 case 6:
