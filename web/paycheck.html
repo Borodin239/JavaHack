@@ -1,26 +1,21 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title>Тестовое приложение</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/paycheck.js"></script>
 </head>
 <body>
-  <div>
-    <form>
-      Сумма платежа: <input id = "PriceInput">
-      <p>Ссылка на тех. задание: <input></p>
-        <p>Дедлайн: <input></p>
-      <button onclick="addOrderFinal()">Подтвердить выполнение</button>
-    </form>
+  <div id="inputForm">
+    <h1>Создать сделку</h1>
+    <input class="form-control form-control-lg" type="text" placeholder="Сумма сделки">
+    <input class="form-control form-control-lg" type="text" placeholder="Ссылка на условия">
+    <input class="form-control form-control-lg" type="text" placeholder="Дедлайн">
+    <button class="btn btn-primary mb-2" type="submit">Получить ссылку</button>
   </div>
 </body>
-
 </html>
