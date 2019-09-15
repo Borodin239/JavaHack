@@ -16,17 +16,31 @@ body {
 
 #inputForm {
   background-color: white;
-  width:40%;
+  width:32%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 100px;
+  padding: 80px;
+  padding-left: 100px;
+  padding-right: 100px;
+  border-radius: 30px;
 }
 
 #inputForm input {
   margin-bottom: 15px;
+  font-size: 16px;
 }
 
 #inputForm h1 {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+}
+
+#inputForm h6 {
+  margin-bottom: 25px;
+  color: #8d8d8d;
+  font-weight: 400;
+}
+
+#inputForm button {
+  margin-top: 5px;
 }
