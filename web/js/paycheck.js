@@ -34,6 +34,9 @@ function serverConnectFunc(serverUrl, jsonData) {
                     document.location.href = serverUrl;
                     alert("switch");
                     break;
+                case "goOrderFinalError":
+                    alert("Error on add");
+                    break;
 
                 case "ok":
                     alert("success");
