@@ -28,12 +28,14 @@ function serverConnectFunc(serverUrl, jsonData) {
         async: true,
 
         done: function (event) {
-            alert("0");
             switch (event["answer"])
             {
                 case "goOrderFinal":
-                    document.location.href = serverUrl+"/index.html";
-                    alert("switch");
+                    alert("Ваша сделка успешно зарегистрирована!\nУникальный идентификационный код сделки:" +
+                        event['orderId'].toString());
+                    if (confirm("Вернуться на главную?")){
+                        backOnMain();
+                    }
                     break;
 
                 case "error":
@@ -60,12 +62,15 @@ function serverConnectFunc(serverUrl, jsonData) {
     });
 }
 
-function addOrderFinal() {
-    var jsonData = new Object();
-    jsonData.command = "41";
-    jsonData.link = "sad";
-    jsonData.deadline = "12";
-    jsonData.price = "12";//$('#PriceInput').val();
-
+function createOrder() {
+    const jsonData = new Object();
+    jsonData.command = "9";
+    jsonData.link = $('#linkInput').val();
+    jsonData.deadline = $('#deadlineInput').val();
+    jsonData.price = $('#priceInput').val();
     serverConnectFunc(serverPath, JSON.stringify(jsonData));
+}
+
+function backOnMain() {
+    document.location.href = serverPath + "/index.html";
 }

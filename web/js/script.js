@@ -73,10 +73,7 @@ function addName()
 }
 
 function addOrder() {
-    var jsonData = new Object();
-    jsonData.command = "4";
-
-    serverConnectFunc(serverPath, JSON.stringify(jsonData));
+    document.location.href = (serverPath + "/createpaycheck.html");
 }
 
 function onDone() {
