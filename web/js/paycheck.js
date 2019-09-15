@@ -30,8 +30,8 @@ function serverConnectFunc(serverUrl, jsonData) {
         success: function (event) {
             switch (event["answer"])
             {
-                case "goOrder":
-                    document.location.href = serverUrl + "/paycheck.html";
+                case "goOrderFinal":
+                    document.location.href = serverUrl;
                     alert("switch");
                     break;
 
@@ -56,13 +56,12 @@ function serverConnectFunc(serverUrl, jsonData) {
     });
 }
 
-function addOrder() {
+function addOrderFinal() {
     var jsonData = new Object();
     jsonData.command = "41";
     jsonData.link = "sad";
     jsonData.deadline = "12";
-    jsonData.price = $('#PriceInput').val();
-
+    jsonData.price = "12";//$('#PriceInput').val();
 
     serverConnectFunc(serverPath, JSON.stringify(jsonData));
 }
