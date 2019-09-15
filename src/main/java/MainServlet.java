@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServlet;
 import java.util.ArrayList;
 
 import Data.OrderData;
+import Data.StatusEnum;
 import Data.UserData;
 import Databases.SQLiteClass;
 import org.json.JSONObject;
@@ -61,28 +62,45 @@ public class MainServlet extends HttpServlet {
                     break;
 
                 case 41:
-                    /*String link = jsonObject.getString("link");
+                    String link = jsonObject.getString("link");
                     String deadline = jsonObject.getString("deadline");
-                    int price = Integer.getInteger(jsonObject.getString("price"));
-                    OrderData newOrder = new OrderData(price, deadline, link);*/
+                    int price = jsonObject.getInt("price");
+                    OrderData newOrder = new OrderData(price, deadline, link);
                     JSONObject jsonToReturn41 = new JSONObject();
-                    //if (SQLiteClass.addOrder(newOrder)) {
+                    if (SQLiteClass.addOrder(newOrder)) {
                         jsonToReturn41.put("answer", "goOrderFinal");
-                    //}else {
-                      //  jsonToReturn41.put("answer", "goOrderFinal");
-                    //}
+                    }else {
+                        jsonToReturn41.put("answer", "goOrderFinalError");
+                    }
                     out.println(jsonToReturn41.toString());
                     break;
 
 
                 case 5:
                     //команда для получения списка действующих заказов
+                    ArrayList<OrderData> orders = SQLiteClass.orderList();
 
                     break;
 
                 case 6:
                     //команда для уведомление о выполнении заказа
+                    int orderId = jsonObject.getInt("orderId");
+                    JSONObject jsonToReturn6 = new JSONObject();
+                    try {
+                        if (!SQLiteClass.setOrderStatus(orderId, StatusEnum.ONCHECK)){
+                            throw new Exception("Не удалось записать в базу данных");
+                        }
+                        jsonToReturn6.put("answer", "doneDone");
+                    }catch (Exception e){
+                        jsonToReturn6.put("answer", "error");
+                        jsonToReturn6.put("error", e.toString());
+                    }finally {
+                        out.println(jsonToReturn6.toString());
+                    }
+
+                    //TODO: отправка уведомления пользователю о выполнении заказа
                     break;
+
 
                 case 0: //show all names
 
