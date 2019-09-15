@@ -8,6 +8,7 @@ public class OrderData {
     private int price;
     private String deadline;
     private String link;
+    private String status;
 
     public int getId() {
         return id;
@@ -15,6 +16,10 @@ public class OrderData {
 
     public String getDeadline() {
         return deadline;
+    }
+
+    public String getStatus(){
+        return status;
     }
 
     public int getPrice() {
@@ -25,9 +30,10 @@ public class OrderData {
         return link;
     }
 
-    public OrderData(int price, String  deadline, String link){
+    public OrderData(int price, String  deadline, String link, String status){
         this.price = price;
         this.deadline = deadline;
         this.link = link;
+        this.status = status;
     }
 }

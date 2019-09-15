@@ -68,11 +68,12 @@ public class SQLiteClass {
             stat = conn.createStatement();
 
             PreparedStatement statement = conn.prepareStatement
-                    ("INSERT INTO orders (id, deadline, price, link) VALUES (?, ?, ?, ?)");
+                    ("INSERT INTO orders (id, deadline, price, link, status) VALUES (?, ?, ?, ?, ?)");
             statement.setString(1, Integer.toString(orderData.getId()));
             statement.setString(2, orderData.getDeadline().toString());
             statement.setString(3, Integer.toString(orderData.getPrice()));
             statement.setString(4, orderData.getLink());
+            statement.setString(5, orderData.getStatus());
             statement.execute();
             statement.close();
             result = true;
@@ -88,18 +89,67 @@ public class SQLiteClass {
     }
 
     //функция: выдать список заказов
-    public static ArrayList<OrderData> orderList(){
-        return null;
+    public static ArrayList<OrderData> orderList() throws SQLException, ClassNotFoundException {
+        ArrayList<OrderData> allOrders = new ArrayList<>();
+        try{
+            Conn();
+            stat = conn.createStatement();
+            //здесь надо получать всю строку из бд
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        finally {
+            stat.close();
+            CloseDB();
+        }
+        return allOrders;
     }
 
     //функция: узнать статус заказа
-    public static StatusEnum checkOrderStatus(int orderId){
-        return null;
+    public static StatusEnum checkOrderStatus(int orderId) throws SQLException, ClassNotFoundException {
+        String status = null;
+        try {
+            Conn();
+            stat = conn.createStatement();
+            String command = "SELECT status FROM orders WHERE id = " + orderId + ";";
+            ResultSet rs = stat.executeQuery(command);
+            while (rs.next()) {
+                status = rs.getString("status");
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        finally {
+            stat.close();
+            CloseDB();
+        }
+        return StatusEnum.valueOf(status);
     }
 
     //функция: изменить статус заказа
-    public static boolean setOrderStatus(int orderId, StatusEnum status){
-        return false;
+    public static boolean setOrderStatus(int orderId, StatusEnum status) throws SQLException, ClassNotFoundException {
+        boolean result = false;
+        try {
+            Conn();
+            stat = conn.createStatement();
+            String command = "UPDATE orders SET status = " + status + " WHERE id = " + orderId + ";";
+            PreparedStatement statement = conn.prepareStatement(command);
+            statement.execute();
+            statement.close();
+            result = true;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            result = false;
+        }
+        finally {
+            stat.close();
+            CloseDB();
+        }
+
+        return result;
     }
 
     //функция: архивировать заказ
