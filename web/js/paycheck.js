@@ -63,8 +63,8 @@ function serverConnectFunc(serverUrl, jsonData) {
 }
 
 function createOrder() {
-    var jsonData = new Object();
-    jsonData.command = "41";
+    const jsonData = new Object();
+    jsonData.command = "9";
     jsonData.link = $('#linkInput').val();
     jsonData.deadline = $('#deadlineInput').val();
     jsonData.price = $('#priceInput').val();

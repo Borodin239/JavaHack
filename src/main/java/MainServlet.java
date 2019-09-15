@@ -46,7 +46,7 @@ public class MainServlet extends HttpServlet {
             JSONObject jsonObject = new JSONObject(jb.toString());
 
             response.setContentType("text/html;charset=UTF-8");
-            PrintWriter out = response.getWriter();
+            //PrintWriter out = response.getWriter();
 
             int command = jsonObject.getInt("command");
 
@@ -57,10 +57,10 @@ public class MainServlet extends HttpServlet {
                     //переход в новое окно - там создание платежки и ее добавление в бд
                     JSONObject jsonToReturn4 = new JSONObject();
                     jsonToReturn4.put("answer", "goOrder");
-                    out.println(jsonToReturn4.toString());
+                    response.getWriter().println(jsonToReturn4.toString());
                     break;
 
-                case 41:
+                case 9:
                     System.out.println("Start 41 command");
                     JSONObject jsonToReturn41 = new JSONObject();
                     try {
@@ -69,16 +69,15 @@ public class MainServlet extends HttpServlet {
                         int price = jsonObject.getInt("price");
                         OrderData newOrder = new OrderData(price, deadline, link, StatusEnum.BEFORE);
                         int orderId = newOrder.getId();
-                        if (!SQLiteClass.addOrder(newOrder)){
-                            throw new Exception("Error on add to DB");
-                        }
+                        SQLiteClass.addOrder(newOrder);
                         jsonToReturn41.put("answer", "goOrderFinal");
                         jsonToReturn41.put("orderId", orderId);
-                        response.getWriter().println(jsonToReturn41.toString());
+                        response.getWriter().append(jsonToReturn41.toString());
+                        response.setStatus(200);
                     }catch (Exception e){
                         jsonToReturn41.put("answer", "error");
                         jsonToReturn41.put("error", e.toString());
-                        out.println(jsonToReturn41.toString());
+                        response.getWriter().append(jsonToReturn41.toString());
                         System.out.println(e.toString());
                     }
                     break;
@@ -103,7 +102,7 @@ public class MainServlet extends HttpServlet {
                         jsonToReturn6.put("answer", "error");
                         jsonToReturn6.put("error", e.toString());
                     }finally {
-                        out.println(jsonToReturn6.toString());
+                        response.getWriter().println(jsonToReturn6.toString());
                     }
 
                     //TODO: отправка уведомления пользователю о выполнении заказа
@@ -121,7 +120,7 @@ public class MainServlet extends HttpServlet {
 
                     JSONObject jsonToReturn0 = new JSONObject();
                     jsonToReturn0.put("answer", "go");
-                    out.println(jsonToReturn0.toString());
+                    response.getWriter().println(jsonToReturn0.toString());
 
                     break;
 
@@ -133,7 +132,7 @@ public class MainServlet extends HttpServlet {
 
                     JSONObject jsonToReturn1 = new JSONObject();
                     jsonToReturn1.put("answer", "ok");
-                    out.println(jsonToReturn1.toString());
+                    response.getWriter().println(jsonToReturn1.toString());
 
                     break;
 
