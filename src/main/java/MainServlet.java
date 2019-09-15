@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServlet;
 import java.util.ArrayList;
 
 import Data.OrderData;
+import Data.StatusEnum;
 import Data.UserData;
 import Databases.SQLiteClass;
 import org.json.JSONObject;
@@ -57,32 +58,55 @@ public class MainServlet extends HttpServlet {
                     JSONObject jsonToReturn4 = new JSONObject();
                     jsonToReturn4.put("answer", "goOrder");
                     out.println(jsonToReturn4.toString());
-
                     break;
 
                 case 41:
-                    /*String link = jsonObject.getString("link");
-                    String deadline = jsonObject.getString("deadline");
-                    int price = Integer.getInteger(jsonObject.getString("price"));
-                    OrderData newOrder = new OrderData(price, deadline, link);*/
+                    System.out.println("Start 41 command");
                     JSONObject jsonToReturn41 = new JSONObject();
-                    //if (SQLiteClass.addOrder(newOrder)) {
+                    try {
+                        String link = jsonObject.getString("link");
+                        String deadline = jsonObject.getString("deadline");
+                        int price = jsonObject.getInt("price");
+                        OrderData newOrder = new OrderData(price, deadline, link, StatusEnum.BEFORE);
+                        if (!SQLiteClass.addOrder(newOrder)){
+                            throw new Exception("Error on add to DB");
+                        }
                         jsonToReturn41.put("answer", "goOrderFinal");
-                    //}else {
-                      //  jsonToReturn41.put("answer", "goOrderFinal");
-                    //}
-                    out.println(jsonToReturn41.toString());
+                    }catch (Exception e){
+                        jsonToReturn41.put("answer", "error");
+                        jsonToReturn41.put("error", e.toString());
+                        System.out.println(e.toString());
+                    } finally {
+                        out.println(jsonToReturn41.toString());
+                    }
                     break;
 
 
                 case 5:
                     //команда для получения списка действующих заказов
+                    ArrayList<OrderData> orders = SQLiteClass.orderList();
 
                     break;
 
                 case 6:
                     //команда для уведомление о выполнении заказа
+                    int orderId = jsonObject.getInt("orderId");
+                    JSONObject jsonToReturn6 = new JSONObject();
+                    try {
+                        if (!SQLiteClass.setOrderStatus(orderId, StatusEnum.ONCHECK)){
+                            throw new Exception("Не удалось записать в базу данных");
+                        }
+                        jsonToReturn6.put("answer", "doneDone");
+                    }catch (Exception e){
+                        jsonToReturn6.put("answer", "error");
+                        jsonToReturn6.put("error", e.toString());
+                    }finally {
+                        out.println(jsonToReturn6.toString());
+                    }
+
+                    //TODO: отправка уведомления пользователю о выполнении заказа
                     break;
+
 
                 case 0: //show all names
 

@@ -30,6 +30,13 @@ function serverConnectFunc(serverUrl, jsonData) {
         success: function (event) {
             switch (event["answer"])
             {
+                case "error":
+                    var errorText = event["error"];
+                    alert(errorText);
+                    break;
+                case "doneDone":
+                    alert("Отправлено на проверку заказчику!");
+                    break;
                 case "goOrder":
                     document.location.href = serverUrl + "/paycheck.html";
                     alert("switch");
@@ -68,6 +75,21 @@ function addName()
 function addOrder() {
     var jsonData = new Object();
     jsonData.command = "4";
+
+    serverConnectFunc(serverPath, JSON.stringify(jsonData));
+}
+
+function onDone() {
+    var answerString = prompt("Введите уникальный номер заказа");
+    if (isNaN(answerString)){
+        alert("Уникальный номер может состоять только из цифр");
+        return;
+    }
+    var answer = parseInt(answerString);
+
+    var jsonData = new Object();
+    jsonData.command = "6";
+    jsonData.orderId = answer;
 
     serverConnectFunc(serverPath, JSON.stringify(jsonData));
 }

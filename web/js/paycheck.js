@@ -27,12 +27,18 @@ function serverConnectFunc(serverUrl, jsonData) {
         dataType: 'json',
         async: true,
 
-        success: function (event) {
+        done: function (event) {
+            alert("0");
             switch (event["answer"])
             {
                 case "goOrderFinal":
-                    document.location.href = serverUrl;
+                    document.location.href = serverUrl+"/index.html";
                     alert("switch");
+                    break;
+
+                case "error":
+                    var errorText = event["error"];
+                    alert(errorText);
                     break;
 
                 case "ok":
@@ -42,11 +48,9 @@ function serverConnectFunc(serverUrl, jsonData) {
                 case "names":
                     var keysList = event["list"].replace("[", ""). replace("]", "").split(",");
                     $("#table_names").empty();
-
                     keysList.forEach(function(item, i, arr) {
                         $("#table_names").append("<tr><td>" + item + "</td></tr>");
                     });
-
                     break;
             }
         },
