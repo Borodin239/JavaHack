@@ -16,10 +16,11 @@
     <h1>Создать сделку</h1>
     <h6 align="center">Вы в шаге от создания безопасной сделки. Осталось
       заполнить сумму заказа, условия договора и дедлайн.</h6>
-    <input class="form-control form-control-lg" type="text" placeholder="Сумма сделки">
-    <input class="form-control form-control-lg" type="text" placeholder="Ссылка на условия">
-    <input class="form-control form-control-lg" type="text" placeholder="Дедлайн">
-    <button class="btn btn-primary mb-2" type="submit">Получить ссылку</button>
+    <input class="form-control form-control-lg" type="text" placeholder="Сумма сделки" id="priceInput">
+    <input class="form-control form-control-lg" type="text" placeholder="Ссылка на условия" id="linkInput">
+    <input class="form-control form-control-lg" type="text" placeholder="Дедлайн" id="deadlineInput">
+    <button class="btn btn-primary mb-2" type="submit" onclick="createOrder()">Получить ссылку</button>
+    <button class="btn btn-primary mb-2" onclick="backOnMain()">На главную</button>
   </div>
 </body>
 </html>

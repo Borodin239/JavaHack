@@ -60,12 +60,15 @@ function serverConnectFunc(serverUrl, jsonData) {
     });
 }
 
-function addOrderFinal() {
+function createOrder() {
     var jsonData = new Object();
     jsonData.command = "41";
-    jsonData.link = "sad";
-    jsonData.deadline = "12";
-    jsonData.price = "12";//$('#PriceInput').val();
-
+    jsonData.link = $('#linkInput').val();
+    jsonData.deadline = $('#deadlineInput').val();
+    jsonData.price = $('#priceInput').val();
     serverConnectFunc(serverPath, JSON.stringify(jsonData));
+}
+
+function backOnMain() {
+    document.location.href = serverPath + "/index.html";
 }
