@@ -65,7 +65,7 @@ public class MainServlet extends HttpServlet {
                     String link = jsonObject.getString("link");
                     String deadline = jsonObject.getString("deadline");
                     int price = jsonObject.getInt("price");
-                    OrderData newOrder = new OrderData(price, deadline, link);
+                    OrderData newOrder = new OrderData(price, deadline, link, StatusEnum.BEFORE);
                     JSONObject jsonToReturn41 = new JSONObject();
                     if (SQLiteClass.addOrder(newOrder)) {
                         jsonToReturn41.put("answer", "goOrderFinal");
