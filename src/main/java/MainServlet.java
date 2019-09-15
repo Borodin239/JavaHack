@@ -71,9 +71,8 @@ public class MainServlet extends HttpServlet {
                         int orderId = newOrder.getId();
                         SQLiteClass.addOrder(newOrder);
                         jsonToReturn41.put("answer", "goOrderFinal");
-                        jsonToReturn41.put("orderId", orderId);
+                        jsonToReturn41.put("orderId", String.valueOf(orderId));
                         response.getWriter().append(jsonToReturn41.toString());
-                        response.setStatus(200);
                     }catch (Exception e){
                         jsonToReturn41.put("answer", "error");
                         jsonToReturn41.put("error", e.toString());
