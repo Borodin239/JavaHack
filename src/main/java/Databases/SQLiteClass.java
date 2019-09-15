@@ -94,6 +94,14 @@ public class SQLiteClass {
         try{
             Conn();
             stat = conn.createStatement();
+            ResultSet rs = stat.executeQuery("SELECT * from orders");
+            while (rs.next()){
+                OrderData newOrder = new OrderData(rs.getInt("price"),
+                        rs.getString("deadline"),
+                        rs.getString("link"),
+                        StatusEnum.valueOf(rs.getString("status")));
+                allOrders.add(newOrder);
+            }
             //здесь надо получать всю строку из бд
         }
         catch (Exception e) {
