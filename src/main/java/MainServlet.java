@@ -58,21 +58,27 @@ public class MainServlet extends HttpServlet {
                     JSONObject jsonToReturn4 = new JSONObject();
                     jsonToReturn4.put("answer", "goOrder");
                     out.println(jsonToReturn4.toString());
-
                     break;
 
                 case 41:
-                    String link = jsonObject.getString("link");
-                    String deadline = jsonObject.getString("deadline");
-                    int price = jsonObject.getInt("price");
-                    OrderData newOrder = new OrderData(price, deadline, link, StatusEnum.BEFORE);
+                    System.out.println("Start 41 command");
                     JSONObject jsonToReturn41 = new JSONObject();
-                    if (SQLiteClass.addOrder(newOrder)) {
+                    try {
+                        String link = jsonObject.getString("link");
+                        String deadline = jsonObject.getString("deadline");
+                        int price = jsonObject.getInt("price");
+                        OrderData newOrder = new OrderData(price, deadline, link, StatusEnum.BEFORE);
+                        if (!SQLiteClass.addOrder(newOrder)){
+                            throw new Exception("Error on add to DB");
+                        }
                         jsonToReturn41.put("answer", "goOrderFinal");
-                    }else {
-                        jsonToReturn41.put("answer", "goOrderFinalError");
+                    }catch (Exception e){
+                        jsonToReturn41.put("answer", "error");
+                        jsonToReturn41.put("error", e.toString());
+                        System.out.println(e.toString());
+                    } finally {
+                        out.println(jsonToReturn41.toString());
                     }
-                    out.println(jsonToReturn41.toString());
                     break;
 
 
