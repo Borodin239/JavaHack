@@ -20,7 +20,8 @@ else
 
 function serverConnectFunc(serverUrl, jsonData) {
     $.ajax({
-        url: serverUrl + "/",
+        url: serverUrl + "/createpaycheck.html",
+
         type: 'POST',
         data: jsonData,
 
@@ -32,7 +33,7 @@ function serverConnectFunc(serverUrl, jsonData) {
             {
                 case "goOrderFinal":
                     alert("Ваша сделка успешно зарегистрирована!\nУникальный идентификационный код сделки:" +
-                        event['orderId'].toString());
+                        event['orderId'].val());
                     if (confirm("Вернуться на главную?")){
                         backOnMain();
                     }
@@ -65,9 +66,9 @@ function serverConnectFunc(serverUrl, jsonData) {
 function createOrder() {
     const jsonData = new Object();
     jsonData.command = "9";
-    jsonData.link = $('#linkInput').val();
-    jsonData.deadline = $('#deadlineInput').val();
-    jsonData.price = $('#priceInput').val();
+    jsonData.link = "ads";//$('#linkInput').val();
+    jsonData.deadline = "11";//$('#deadlineInput').val();
+    jsonData.price = "11";//$('#priceInput').val();
     serverConnectFunc(serverPath, JSON.stringify(jsonData));
 }
 
