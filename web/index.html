@@ -1,24 +1,42 @@
-<!DOCTYPE html>
 <html>
 <head>
-    <title>Тестовое приложение</title>
+    <title>Создать сделку</title>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/script.js"></script>
+    <script src="js/paycheck.js"></script>
 </head>
 <body>
-  <div>
-    <button onclick="addOrder()">Создать платёжку</button>
-    <button onclick="">Подтвердить выполнение</button>
+  <div id="cardForm">
+    <h1>Мои сделки</h1>
+    <h6 align="center">В этом пункте находятся все ваши активные сделки.</h6>
+    <div class="row" style="margin-bottom: 25px;">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Создание сайта</h5>
+        <p class="card-text">Дедлайн: <kbd>10/11/2022</kbd></p>
+        <a href="#" class="btn btn-primary">Условия</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Создание мобильного приложения</h5>
+        <p class="card-text">Дедлайн: <kbd>05/13/2019</kbd></p>
+        <a href="#" class="btn btn-primary">Условия</a>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="btn btn-primary">Создать новую сделку</button>
+    </div>
   </div>
 </body>
-
-  <!-- Interface scripts -->
-
 </html>
