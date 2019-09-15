@@ -68,16 +68,18 @@ public class MainServlet extends HttpServlet {
                         String deadline = jsonObject.getString("deadline");
                         int price = jsonObject.getInt("price");
                         OrderData newOrder = new OrderData(price, deadline, link, StatusEnum.BEFORE);
+                        int orderId = newOrder.getId();
                         if (!SQLiteClass.addOrder(newOrder)){
                             throw new Exception("Error on add to DB");
                         }
                         jsonToReturn41.put("answer", "goOrderFinal");
+                        jsonToReturn41.put("orderId", orderId);
+                        response.getWriter().println(jsonToReturn41.toString());
                     }catch (Exception e){
                         jsonToReturn41.put("answer", "error");
                         jsonToReturn41.put("error", e.toString());
-                        System.out.println(e.toString());
-                    } finally {
                         out.println(jsonToReturn41.toString());
+                        System.out.println(e.toString());
                     }
                     break;
 

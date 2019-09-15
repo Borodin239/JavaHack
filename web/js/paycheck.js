@@ -28,12 +28,14 @@ function serverConnectFunc(serverUrl, jsonData) {
         async: true,
 
         done: function (event) {
-            alert("0");
             switch (event["answer"])
             {
                 case "goOrderFinal":
-                    document.location.href = serverUrl+"/index.html";
-                    alert("switch");
+                    alert("Ваша сделка успешно зарегистрирована!\nУникальный идентификационный код сделки:" +
+                        event['orderId'].toString());
+                    if (confirm("Вернуться на главную?")){
+                        backOnMain();
+                    }
                     break;
 
                 case "error":
