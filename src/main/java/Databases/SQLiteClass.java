@@ -62,6 +62,7 @@ public class SQLiteClass {
 
     //функция: добавить заказ
     public static boolean addOrder(OrderData orderData) throws SQLException, NamingException, ClassNotFoundException {
+        System.out.println("Start addOrder function");
         boolean result = true;
         try {
             Conn();
@@ -69,9 +70,9 @@ public class SQLiteClass {
 
             PreparedStatement statement = conn.prepareStatement
                     ("INSERT INTO orders (id, deadline, price, link, status) VALUES (?, ?, ?, ?, ?)");
-            statement.setString(1, Integer.toString(orderData.getId()));
+            statement.setInt(1, orderData.getId());
             statement.setString(2, orderData.getDeadline());
-            statement.setString(3, Integer.toString(orderData.getPrice()));
+            statement.setInt(3, orderData.getPrice());
             statement.setString(4, orderData.getLink());
             statement.setString(5, orderData.getStatus().toString());
             statement.execute();
@@ -85,7 +86,8 @@ public class SQLiteClass {
             stat.close();
             CloseDB();
         }
-        return result;
+        System.out.println("Finish addOrder function");
+        return true;
     }
 
     //функция: выдать список заказов
