@@ -8,7 +8,7 @@ public class OrderData {
     private int price;
     private String deadline;
     private String link;
-    private String status;
+    private StatusEnum status;
 
     public int getId() {
         return id;
@@ -18,7 +18,7 @@ public class OrderData {
         return deadline;
     }
 
-    public String getStatus(){
+    public StatusEnum getStatus(){
         return status;
     }
 
@@ -30,7 +30,7 @@ public class OrderData {
         return link;
     }
 
-    public OrderData(int price, String  deadline, String link, String status){
+    public OrderData(int price, String  deadline, String link, StatusEnum status){
         this.price = price;
         this.deadline = deadline;
         this.link = link;
